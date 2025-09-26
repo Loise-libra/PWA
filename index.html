@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="apple-touch-icon" href="images/perfil.jpg" />
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/images/perfil.jpg" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Person Profile</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2196f3" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Perfil Personal</h1>
+    </header>
+
+    <main class="container">
+      <section id="presentacion" class="card">
+        <h2>¡Hola! Soy Luis Fernando Garro Lescano</h2>
+        <img
+          src="images/personal-perfil.jpg"
+          alt="Foto de perfil"
+          class="profile-pic"
+        />
+        <p>
+          Bienvenido a mi página. Soy un apasionado desarrollador de software
+          con experiencia en la creación de aplicaciones web modernas y
+          funcionales. Me encanta aprender nuevas tecnologías y enfrentar
+          desafíos que me permitan crecer profesionalmente.
+        </p>
+      </section>
+
+      <section class="card form-section">
+        <h2>Salúdame</h2>
+        <div class="form-group">
+          <button id="greetButton">Saludar</button>
+          <input type="text" id="nombre" placeholder="Ingresa tu nombre" />
+        </div>
+      </section>
+
+      <section id="nosotros" class="card">
+        <h2>Sobre Nosotros</h2>
+        <p>
+          Somos un equipo de profesionales dedicados a ofrecer soluciones
+          tecnológicas de alta calidad. Nuestra misión es ayudar a nuestros
+          clientes a alcanzar sus objetivos a través de la innovación y el
+          desarrollo de software a medida. Valoramos la colaboración, la
+          creatividad y el compromiso con la excelencia.
+        </p>
+      </section>
+
+      <!-- En index.html, reemplaza la sección del juego por: -->
+      <section class="card game-section">
+        <h2>🎮 Juega a la Culebrita</h2>
+        <button id="playSnakeButton" class="button primary-button">
+          Iniciar Juego
+        </button>
+      </section>
+    </main>
+
+    <div id="gameContainer" style="display: none">
+      <button id="closeGameButton" class="close-button">&times;</button>
+      <canvas id="gameCanvas" width="300" height="300"></canvas>
+      <p class="score-text">Puntuación: <span id="score">0</span></p>
+      <div class="game-controls">
+        <button id="upButton" class="control-button">↑</button>
+        <div class="horizontal-buttons">
+          <button id="leftButton" class="control-button">←</button>
+          <button id="rightButton" class="control-button">→</button>
+        </div>
+        <button id="downButton" class="control-button">↓</button>
+      </div>
+      <button id="resetGameButton" class="button secondary-button">
+        Reiniciar
+      </button>
+    </div>
+
+    <footer class="footer" id="contacto">
+      <div class="footer-content">
+        <p>
+          Contacto:
+          <a href="mailto:garrolescanoluisfernando@gmail.com"
+            >garrolescanoluisfernando@gmail.com</a
+          >
+        </p>
+        <p>
+          &copy; 2024 [Luis fernando Garro Lescano]. Todos los derechos
+          reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>

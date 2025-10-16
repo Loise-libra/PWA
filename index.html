@@ -1,97 +1,481 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <link rel="apple-touch-icon" href="images/perfil.jpg" />
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/images/perfil.jpg" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Person Profile</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#2196f3" />
-  </head>
-  <body>
-    <header class="header">
-      <h1>Perfil Personal</h1>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luis Fernando Garro Lescano | Developer</title>
+  <link rel="icon" href="images/perfil.jpg" type="image/x-icon">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00d9ff">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --bg-secondary: #f1f5fa;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --accent: #00d9ff;
+      --accent-dark: #0099cc;
+      --success: #00ff88;
+      --danger: #ff2a6d;
+      --radius: 20px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 15px 40px rgba(0, 217, 255, 0.15);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-    <main class="container">
-      <section id="presentacion" class="card">
-        <h2>¡Hola! Soy Luis Fernando Garro Lescano</h2>
-        <img
-          src="images/personal-perfil.jpg"
-          alt="Foto de perfil"
-          class="profile-pic"
-        />
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-secondary) 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      padding: 1.5rem 5%;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 2.2rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark), var(--success));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* ===== SECCIÓN HERO ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 5rem 0;
+    }
+
+    .hero-content h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .profile-pic {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.4);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(0, 217, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 217, 255, 0); }
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      margin: 3rem 0;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(0, 217, 255, 0.15);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(0, 217, 255, 0.4);
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== FORM ===== */
+    .form-section {
+      text-align: center;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      max-width: 350px;
+      padding: 14px 20px;
+      background: rgba(0, 217, 255, 0.08);
+      border: 2px solid rgba(0, 217, 255, 0.3);
+      border-radius: 14px;
+      color: var(--text);
+      font-size: 1.1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.2);
+      background: rgba(0, 217, 255, 0.12);
+    }
+
+    input[type="text"]::placeholder {
+      color: var(--text-secondary);
+    }
+
+    /* ===== BOTONES ===== */
+    .btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(90deg, var(--accent), #00ffaa);
+      color: var(--bg);
+      box-shadow: 0 5px 15px rgba(0, 217, 255, 0.3);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 217, 255, 0.5);
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(90deg, var(--danger), #ff0055);
+      box-shadow: 0 5px 15px rgba(255, 42, 109, 0.3);
+    }
+
+    .btn-secondary:hover {
+      box-shadow: 0 8px 25px rgba(255, 42, 109, 0.5);
+    }
+
+    /* ===== JUEGO MODAL ===== */
+    #gameContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 14, 23, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    #gameContainer[style*="display: flex"] {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 2.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .close-button:hover {
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    #gameCanvas {
+      background: #080c14;
+      border-radius: 16px;
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
+    }
+
+    .score-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      color: white;
+      margin: 20px 0;
+    }
+
+    .score-text span {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    /* ===== CONTROLES DEL JUEGO ===== */
+    .game-controls {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .horizontal-buttons {
+      display: flex;
+      gap: 70px;
+      margin: 15px 0;
+    }
+
+    .control-button {
+      width: 70px;
+      height: 70px;
+      background: rgba(0, 240, 255, 0.15);
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+
+    .control-button:hover {
+      background: rgba(0, 240, 255, 0.3);
+      transform: scale(1.15) translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+    }
+
+    .control-button:active {
+      transform: scale(1.05) translateY(0);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 2.5rem 0;
+      text-align: center;
+      margin-top: 4rem;
+      border-top: 1px solid rgba(0, 217, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    footer p {
+      color: var(--text-secondary);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    footer a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+      .hero-content p {
+        margin: 0 auto 2rem;
+      }
+      .profile-pic {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+      }
+      .horizontal-buttons {
+        gap: 40px;
+      }
+      .control-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+      #gameCanvas {
+        width: 260px;
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Luis Fernando Garro Lescano</h1>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>¡Hola! Soy Luis Fernando</h2>
         <p>
-          Bienvenido a mi página. Soy un apasionado desarrollador de software
-          con experiencia en la creación de aplicaciones web modernas y
-          funcionales. Me encanta aprender nuevas tecnologías y enfrentar
-          desafíos que me permitan crecer profesionalmente.
+          Desarrollador de software apasionado por crear experiencias web modernas, funcionales y visualmente impactantes.
+          Me especializo en resolver problemas con código limpio y tecnologías innovadoras.
         </p>
-      </section>
-
-      <section class="card form-section">
-        <h2>Salúdame</h2>
-        <div class="form-group">
-          <button id="greetButton">Saludar</button>
-          <input type="text" id="nombre" placeholder="Ingresa tu nombre" />
-        </div>
-      </section>
-
-      <section id="nosotros" class="card">
-        <h2>Sobre Nosotros</h2>
-        <p>
-          Somos un equipo de profesionales dedicados a ofrecer soluciones
-          tecnológicas de alta calidad. Nuestra misión es ayudar a nuestros
-          clientes a alcanzar sus objetivos a través de la innovación y el
-          desarrollo de software a medida. Valoramos la colaboración, la
-          creatividad y el compromiso con la excelencia.
-        </p>
-      </section>
-
-      <!-- En index.html, reemplaza la sección del juego por: -->
-      <section class="card game-section">
-        <h2>🎮 Juega a la Culebrita</h2>
-        <button id="playSnakeButton" class="button primary-button">
-          Iniciar Juego
-        </button>
-      </section>
-    </main>
-
-    <div id="gameContainer" style="display: none">
-      <button id="closeGameButton" class="close-button">&times;</button>
-      <canvas id="gameCanvas" width="300" height="300"></canvas>
-      <p class="score-text">Puntuación: <span id="score">0</span></p>
-      <div class="game-controls">
-        <button id="upButton" class="control-button">↑</button>
-        <div class="horizontal-buttons">
-          <button id="leftButton" class="control-button">←</button>
-          <button id="rightButton" class="control-button">→</button>
-        </div>
-        <button id="downButton" class="control-button">↓</button>
+        <a href="#contacto" class="btn" style="display: inline-block; text-align: center;">Contáctame</a>
       </div>
-      <button id="resetGameButton" class="button secondary-button">
-        Reiniciar
-      </button>
+      <img src="images/personal-perfil.jpg" alt="Luis Fernando Garro Lescano" class="profile-pic">
+    </section>
+
+    <!-- Saludo -->
+    <section class="card form-section">
+      <h2>💬 ¡Salúdame!</h2>
+      <div class="form-group">
+        <input type="text" id="nombre" placeholder="¿Cómo te llamas?">
+        <button id="greetButton" class="btn">Enviar saludo</button>
+      </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section class="card">
+      <h2>🚀 Sobre Nosotros</h2>
+      <p>
+        Somos un equipo de profesionales dedicados a ofrecer soluciones tecnológicas de alta calidad.
+        Nuestra misión es ayudar a nuestros clientes a alcanzar sus objetivos a través de la innovación
+        y el desarrollo de software a medida. Valoramos la colaboración, la creatividad y el compromiso con la excelencia.
+      </p>
+    </section>
+
+    <!-- Juego -->
+    <section class="card">
+      <h2>🎮 Juega a la Culebrita</h2>
+      <p>Demuestra tus reflejos en este clásico juego con un toque moderno.</p>
+      <button id="playSnakeButton" class="btn" style="margin-top: 1.5rem;">Iniciar Juego</button>
+    </section>
+  </main>
+
+  <!-- Modal del Juego -->
+  <div id="gameContainer" style="display: none;">
+    <button id="closeGameButton" class="close-button">&times;</button>
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <p class="score-text">Puntuación: <span id="score">0</span></p>
+    <div class="game-controls">
+      <button id="upButton" class="control-button">↑</button>
+      <div class="horizontal-buttons">
+        <button id="leftButton" class="control-button">←</button>
+        <button id="rightButton" class="control-button">→</button>
+      </div>
+      <button id="downButton" class="control-button">↓</button>
     </div>
+    <button id="resetGameButton" class="btn btn-secondary" style="margin-top: 20px;">Reiniciar Juego</button>
+  </div>
 
-    <footer class="footer" id="contacto">
-      <div class="footer-content">
-        <p>
-          Contacto:
-          <a href="mailto:garrolescanoluisfernando@gmail.com"
-            >garrolescanoluisfernando@gmail.com</a
-          >
-        </p>
-        <p>
-          &copy; 2024 [Luis fernando Garro Lescano]. Todos los derechos
-          reservados.
-        </p>
-      </div>
-    </footer>
+  <footer id="contacto">
+    <p>Contacto: <a href="mailto:garrolescanoluisfernando@gmail.com">garrolescanoluisfernando@gmail.com</a></p>
+    <p>&copy; 2024 Luis Fernando Garro Lescano. Todos los derechos reservados.</p>
+  </footer>
 
-    <script src="js/app.js"></script>
-    <script src="js/game.js"></script>
-  </body>
+  <!-- Tus scripts (no cambian) -->
+  <script src="js/app.js"></script>
+  <script src="js/game.js"></script>
+</body>
 </html>
